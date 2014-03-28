@@ -1,4 +1,4 @@
-package co.networkery.uvbeenzaned.BaseWars.Listeners;
+package co.networkery.uvbeenzaned.BaseWars.Game.Listeners;
 
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;

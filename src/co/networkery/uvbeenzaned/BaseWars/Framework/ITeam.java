@@ -20,4 +20,12 @@ public interface ITeam {
 	void addPlayer(Player p);
 	
 	void removePlayer(Player p);
+	
+	boolean hasPlayer(Player p);
+	
+	void addArenaPlayer(Player p);
+	
+	void removeArenaPlayer(Player p);
+	
+	boolean hasArenaPlayer(Player p);
 }
