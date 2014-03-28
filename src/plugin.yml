@@ -1,0 +1,7 @@
+name: BaseWars
+main: co.networkery.uvbeenzaned.BaseWars.BaseWars
+version: 1.0.0
+commands:
+   basewars:
+       description: Main BaseWars command.
+       aliases: [bw]
