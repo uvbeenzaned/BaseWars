@@ -1,4 +1,4 @@
-package co.networkery.uvbeenzaned.BaseWars;
+package co.networkery.uvbeenzaned.BaseWars.IO;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

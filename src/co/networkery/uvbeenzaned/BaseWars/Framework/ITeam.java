@@ -1,4 +1,4 @@
-package co.networkery.uvbeenzaned.BaseWars;
+package co.networkery.uvbeenzaned.BaseWars.Framework;
 
 import java.util.List;
 

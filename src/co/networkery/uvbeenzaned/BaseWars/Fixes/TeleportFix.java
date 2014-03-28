@@ -1,4 +1,4 @@
-package co.networkery.uvbeenzaned.BaseWars;
+package co.networkery.uvbeenzaned.BaseWars.Fixes;
 
 import java.util.ArrayList;
 import java.util.List;
