@@ -15,7 +15,7 @@ public interface ITeam {
 
 	void setColor(ChatColor c);
 	
-	List<String> getPlayers();
+	List<Player> getPlayers();
 	
 	void addPlayer(Player p);
 	
@@ -28,4 +28,6 @@ public interface ITeam {
 	void removeArenaPlayer(Player p);
 	
 	boolean hasArenaPlayer(Player p);
+	
+	boolean hasNoPlayers();
 }

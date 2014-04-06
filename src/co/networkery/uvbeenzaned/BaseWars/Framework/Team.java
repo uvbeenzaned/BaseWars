@@ -3,6 +3,7 @@ package co.networkery.uvbeenzaned.BaseWars.Framework;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -38,9 +39,14 @@ public class Team implements ITeam {
 		color = c;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
-	public List<String> getPlayers() {
-		return players;
+	public List<Player> getPlayers() {
+		ArrayList<Player> objplayers = new ArrayList<Player>();
+		for(String p : players) {
+			Bukkit.getPlayer(p);
+		}
+		return objplayers;
 	}
 
 	@Override
@@ -72,6 +78,11 @@ public class Team implements ITeam {
 	@Override
 	public boolean hasArenaPlayer(Player p) {
 		return arenaplayers.contains(p.getName());
+	}
+
+	@Override
+	public boolean hasNoPlayers() {
+		return players.isEmpty();
 	}
 
 }
