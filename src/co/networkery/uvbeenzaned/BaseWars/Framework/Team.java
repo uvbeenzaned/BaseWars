@@ -39,7 +39,6 @@ public class Team implements ITeam {
 		color = c;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public List<Player> getPlayers() {
 		ArrayList<Player> objplayers = new ArrayList<Player>();

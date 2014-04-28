@@ -1,5 +1,7 @@
 package co.networkery.uvbeenzaned.BaseWars.Utils;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -12,11 +14,24 @@ public class Chat {
 	static StringBuilder sb = new StringBuilder();
 	static final String format = sb.append(ChatColor.GREEN).append("[").append(ChatColor.GRAY).append("BaseWars").append(ChatColor.GREEN).append("] ").toString();
 
+	public static void sendPlayerMsg(Player p, String msg, boolean formatted) {
+		String finalmsg = msg;
+		if (formatted) {
+			sb = new StringBuilder();
+			finalmsg = sb.append(format).append(msg).toString();
+		} else {
+			finalmsg = processMsg(msg);
+		}
+		p.sendMessage(finalmsg);
+	}
+
 	public static void sendAllTeamsMsg(String msg, boolean formatted) {
 		String finalmsg = msg;
 		if (formatted) {
 			sb = new StringBuilder();
 			finalmsg = sb.append(format).append(processMsg(msg)).toString();
+		} else {
+			finalmsg = processMsg(msg);
 		}
 		for (ITeam t : TeamManager.getTeams()) {
 			for (Player p : t.getPlayers()) {
@@ -30,9 +45,18 @@ public class Chat {
 		if (formatted) {
 			sb = new StringBuilder();
 			finalmsg = sb.append(format).append(processMsg(msg)).toString();
+		} else {
+			finalmsg = processMsg(msg);
 		}
 		for (Player p : t.getPlayers()) {
 			p.sendMessage(finalmsg);
+		}
+	}
+
+	public static void printHelpStringArray(Player p, List<String> h) {
+		for (String help : h) {
+			if (help != "" && help != null)
+				sendPlayerMsg(p, help, true);
 		}
 	}
 
@@ -60,5 +84,21 @@ public class Chat {
 			sb.append(trimmed).append(".");
 		}
 		return sb.toString();
+	}
+
+	public static String appendStrings(String... strings) {
+		sb = new StringBuilder();
+		for (String s : strings) {
+			sb.append(s);
+		}
+		return sb.toString();
+	}
+
+	public static String convertArgsToString(String[] args, int startpoint) {
+		String aname = "";
+		for (int i = startpoint; i < args.length; i++) {
+			aname = appendStrings(aname, args[i], " ");
+		}
+		return aname.trim();
 	}
 }

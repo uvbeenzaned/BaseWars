@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 import co.networkery.uvbeenzaned.BaseWars.Framework.ITeam;
 import co.networkery.uvbeenzaned.BaseWars.Framework.Team;
 import co.networkery.uvbeenzaned.BaseWars.IO.Configurations;
+import co.networkery.uvbeenzaned.BaseWars.Utils.Chat;
 
 public class TeamManager {
 
-	static StringBuilder sb = new StringBuilder();
 	static List<ITeam> teams = new ArrayList<ITeam>();
 
 	public static void initialize() {
@@ -53,7 +53,7 @@ public class TeamManager {
 
 	public static ITeam getTeamByName(String n) {
 		for (ITeam t : teams) {
-			if (t.getName().equals(n)) {
+			if (t.getName().equalsIgnoreCase(n)) {
 				return t;
 			}
 		}
@@ -73,14 +73,28 @@ public class TeamManager {
 		}
 		return false;
 	}
-	
+
 	public static ITeam getTeamHasPlayer(Player p) {
 		for (ITeam t : teams) {
-			if(t.hasArenaPlayer(p)) {
+			if (t.hasArenaPlayer(p)) {
 				return t;
 			}
 		}
 		return null;
+	}
+
+	public static String joinSpecificTeam(Player p, String team) {
+		if (!teamsHavePlayer(p)) {
+			ITeam t = getTeamByName(team);
+			if (t != null) {
+				if (!t.hasPlayer(p)) {
+					t.addPlayer(p);
+					return Chat.appendStrings("You have force joined team ", t.getName(), ".");
+				}
+			}
+			return "You have tried to join a team that doesn't exist!";
+		}
+		return Chat.appendStrings("You are already on team ", getTeamHasPlayer(p).getName(), "!");
 	}
 
 	public static String joinTeam(Player p) {
@@ -90,8 +104,7 @@ public class TeamManager {
 			for (ITeam t : getTeams()) {
 				if (t.hasNoPlayers()) {
 					t.addPlayer(p);
-					sb = new StringBuilder().append("You have joined team ").append(t.getColor()).append(t.getName()).append(".");
-					return sb.toString();
+					return Chat.appendStrings("You have joined team ", t.getName(), ".");
 				}
 			}
 			ITeam leastplayers = null;
@@ -103,20 +116,16 @@ public class TeamManager {
 				}
 			}
 			leastplayers.addPlayer(p);
-		} else {
-			return "You are already on a team!";
 		}
-		return "Error!";
+		return Chat.appendStrings("You are already on team ", getTeamHasPlayer(p).getName(), "!");
 	}
-	
+
 	public static String leaveTeam(Player p) {
-		if(teamsHavePlayer(p)) {
+		if (teamsHavePlayer(p)) {
 			ITeam leaveteam = getTeamHasPlayer(p);
 			leaveteam.removePlayer(p);
-			sb = new StringBuilder().append("You have left team ").append(leaveteam.getColor()).append(leaveteam.getName()).append(".");
-			return sb.toString();
-		} else {
-			return "You are not on a team!";
+			return Chat.appendStrings("You have left team ", leaveteam.getName(), ".");
 		}
+		return "You are not on a team!";
 	}
 }

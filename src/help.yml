@@ -1,0 +1,23 @@
+bw:
+  description: Main BaseWars command.
+  help:
+    description: Displays this help.
+  join:
+    description: Joins you to a team.
+    args:
+    - team name
+  leave:
+    description: Leave your current team.
+  team:
+    description: Main sub-command for modifying registered teams.
+    list:
+      description: Show all registered teams.
+    create:
+      description: Register a new team to play on (Ops only).
+      args:
+      - new team color
+      - new team name
+    delete:
+      description: Remove a registered team (Ops only).
+      args:
+      - team name

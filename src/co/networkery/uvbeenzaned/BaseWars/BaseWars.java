@@ -18,6 +18,7 @@ public class BaseWars extends JavaPlugin {
 	List<Listener> listeners = new ArrayList<Listener>();
 	
 	public void onEnable() {
+		getCommand("basewars").setExecutor(new BWCommandExecutor());
 		Configurations.initialize(this);
 		TeamManager.initialize();
 		listeners.add(new GameListener(this));
