@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import co.networkery.uvbeenzaned.BaseWars.Utils.Chat;
+
 public class Team implements ITeam {
 
 	String name;
@@ -40,10 +42,27 @@ public class Team implements ITeam {
 	}
 
 	@Override
+	public List<String> getInfo() {
+		List<String> info = new ArrayList<String>();
+		info.add(Chat.appendStrings("Name: ", name));
+		info.add(Chat.appendStrings("Color: " + color, color.toString()));
+		String infoplayers = "Players: ";
+		if (!hasNoPlayers()) {
+			for (Player p : getPlayers()) {
+				infoplayers += Chat.appendStrings(p.getName(), ", ");
+			}
+		} else {
+			infoplayers += "none";
+		}
+		info.add(infoplayers);
+		return info;
+	}
+
+	@Override
 	public List<Player> getPlayers() {
 		ArrayList<Player> objplayers = new ArrayList<Player>();
-		for(String p : players) {
-			Bukkit.getPlayer(p);
+		for (String p : players) {
+			objplayers.add(Bukkit.getPlayer(p));
 		}
 		return objplayers;
 	}
@@ -58,7 +77,7 @@ public class Team implements ITeam {
 		players.remove(p.getName());
 		arenaplayers.remove(p.getName());
 	}
-	
+
 	@Override
 	public boolean hasPlayer(Player p) {
 		return players.contains(p.getName());

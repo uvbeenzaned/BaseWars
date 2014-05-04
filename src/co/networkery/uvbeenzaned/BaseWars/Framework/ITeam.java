@@ -15,6 +15,8 @@ public interface ITeam {
 
 	void setColor(ChatColor c);
 	
+	List<String> getInfo();
+	
 	List<Player> getPlayers();
 	
 	void addPlayer(Player p);

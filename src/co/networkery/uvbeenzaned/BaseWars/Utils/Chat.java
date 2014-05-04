@@ -12,7 +12,7 @@ import co.networkery.uvbeenzaned.BaseWars.Game.TeamManager;
 public class Chat {
 
 	static StringBuilder sb = new StringBuilder();
-	static final String format = sb.append(ChatColor.GREEN).append("[").append(ChatColor.GRAY).append("BaseWars").append(ChatColor.GREEN).append("] ").toString();
+	static final String format = sb.append(ChatColor.GREEN).append("[").append(ChatColor.GRAY).append("BaseWars").append(ChatColor.GREEN).append("] ").append(ChatColor.DARK_PURPLE).toString();
 
 	public static void sendPlayerMsg(Player p, String msg, boolean formatted) {
 		String finalmsg = msg;
@@ -53,7 +53,7 @@ public class Chat {
 		}
 	}
 
-	public static void printHelpStringArray(Player p, List<String> h) {
+	public static void printStringList(Player p, List<String> h) {
 		for (String help : h) {
 			if (help != "" && help != null)
 				sendPlayerMsg(p, help, true);

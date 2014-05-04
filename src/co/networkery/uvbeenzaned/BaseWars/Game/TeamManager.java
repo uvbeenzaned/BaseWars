@@ -18,7 +18,7 @@ public class TeamManager {
 
 	public static void initialize() {
 		for (String t : Configurations.getTeamsConfig().getKeys(false)) {
-			Team team = new Team(t, ChatColor.valueOf(Configurations.getTeamsConfig().getConfigurationSection(t).getString("color")));
+			Team team = new Team(t, ChatColor.getByChar(Configurations.getTeamsConfig().getConfigurationSection(t).getString("color")));
 			teams.add(team);
 		}
 	}
@@ -30,6 +30,7 @@ public class TeamManager {
 				Configurations.getTeamsConfig().createSection(t.getName());
 				Configurations.getTeamsConfig().getConfigurationSection(t.getName()).set("color", t.getColor().toString());
 			}
+			Configurations.saveTeamsConfig();
 			return true;
 		}
 		return false;
@@ -38,10 +39,7 @@ public class TeamManager {
 	public static boolean unRegisterTeam(ITeam t) {
 		if (teams.contains(t)) {
 			teams.remove(t);
-			if (Configurations.getTeamsConfig().contains(t.getName())) {
-				Configurations.getTeamsConfig().createSection(t.getName());
-				Configurations.getTeamsConfig().getConfigurationSection(t.getName()).set("color", t.getColor().toString());
-			}
+			Configurations.saveTeamsConfig();
 			return true;
 		}
 		return false;
@@ -76,7 +74,7 @@ public class TeamManager {
 
 	public static ITeam getTeamHasPlayer(Player p) {
 		for (ITeam t : teams) {
-			if (t.hasArenaPlayer(p)) {
+			if (t.hasPlayer(p)) {
 				return t;
 			}
 		}

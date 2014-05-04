@@ -12,6 +12,10 @@ bw:
     description: Main sub-command for modifying registered teams.
     list:
       description: Show all registered teams.
+    info:
+      description: Get specific information about a team.
+      args:
+      - team name
     create:
       description: Register a new team to play on (Ops only).
       args:
