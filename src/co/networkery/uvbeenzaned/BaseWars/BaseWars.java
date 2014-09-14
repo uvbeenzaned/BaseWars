@@ -1,31 +1,31 @@
 package co.networkery.uvbeenzaned.BaseWars;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import co.networkery.uvbeenzaned.BaseWars.Game.Clock;
+import co.networkery.uvbeenzaned.BaseWars.Game.TeamManager;
+import co.networkery.uvbeenzaned.BaseWars.Listeners.GameListener;
+import co.networkery.uvbeenzaned.BaseWars.IO.Configurations;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import co.networkery.uvbeenzaned.BaseWars.Game.TeamManager;
-import co.networkery.uvbeenzaned.BaseWars.Game.Listeners.GameListener;
-import co.networkery.uvbeenzaned.BaseWars.IO.Configurations;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseWars extends JavaPlugin {
 
-	@SuppressWarnings("unused")
-	private GameListener g;
-	
-	List<Listener> listeners = new ArrayList<Listener>();
-	
-	public void onEnable() {
-		getCommand("basewars").setExecutor(new BWCommandExecutor());
-		Configurations.initialize(this);
-		TeamManager.initialize();
-		listeners.add(new GameListener(this));
-	}
-	
-	public void onDisable() {
-		Configurations.saveAllConfigurations();
-	}
-	
+    List<Listener> listeners = new ArrayList<Listener>();
+    @SuppressWarnings("unused")
+    private GameListener g;
+
+    public void onEnable() {
+        getCommand("basewars").setExecutor(new BWCommandExecutor());
+        Clock.initialize();
+        Configurations.initialize(this);
+        TeamManager.initialize();
+        listeners.add(new GameListener(this));
+    }
+
+    public void onDisable() {
+        Configurations.saveAllConfigurations();
+    }
+
 }
