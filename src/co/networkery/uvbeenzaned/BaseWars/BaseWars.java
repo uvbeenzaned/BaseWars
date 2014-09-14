@@ -2,8 +2,8 @@ package co.networkery.uvbeenzaned.BaseWars;
 
 import co.networkery.uvbeenzaned.BaseWars.Game.Clock;
 import co.networkery.uvbeenzaned.BaseWars.Game.TeamManager;
-import co.networkery.uvbeenzaned.BaseWars.Listeners.GameListener;
 import co.networkery.uvbeenzaned.BaseWars.IO.Configurations;
+import co.networkery.uvbeenzaned.BaseWars.Listeners.GameListener;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 

@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
-public class BlockRebuilder implements Listener{
+public class BlockRebuilder implements Listener {
 
     public BlockRebuilder(Plugin p) {
         p.getServer().getPluginManager().registerEvents(this, p);

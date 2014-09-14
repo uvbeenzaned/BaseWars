@@ -14,8 +14,8 @@ public class ClockTickEvent extends Event implements Cancellable {
         centralclockelapsedtime = elapsed;
     }
 
-    public int getCentralClockElapsedTime(){
-        return  centralclockelapsedtime;
+    public int getCentralClockElapsedTime() {
+        return centralclockelapsedtime;
     }
 
     @Override

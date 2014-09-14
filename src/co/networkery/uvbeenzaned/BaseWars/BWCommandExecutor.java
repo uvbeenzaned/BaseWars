@@ -1,10 +1,10 @@
 package co.networkery.uvbeenzaned.BaseWars;
 
+import co.networkery.uvbeenzaned.BaseWars.Chat.Chat;
+import co.networkery.uvbeenzaned.BaseWars.Chat.Help;
 import co.networkery.uvbeenzaned.BaseWars.Framework.ITeam;
 import co.networkery.uvbeenzaned.BaseWars.Framework.Team;
 import co.networkery.uvbeenzaned.BaseWars.Game.TeamManager;
-import co.networkery.uvbeenzaned.BaseWars.Chat.Chat;
-import co.networkery.uvbeenzaned.BaseWars.Chat.Help;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -5,7 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;
 
-public class Clock{
+public class Clock {
 
     private static Plugin p = null;
     private static BukkitTask task = null;
@@ -20,7 +20,7 @@ public class Clock{
     private static void schedule() {
         task = p.getServer().getScheduler().runTaskTimerAsynchronously(p, new Runnable() {
             public void run() {
-                if(isRunning()) {
+                if (isRunning()) {
                     elapsedtime += 50;
                     cte = new ClockTickEvent(elapsedtime);
                     Bukkit.getServer().getPluginManager().callEvent(cte);
@@ -37,7 +37,7 @@ public class Clock{
 
     public static void setRunning(boolean b) {
         running = b;
-        if(isRunning()) {
+        if (isRunning()) {
             schedule();
         }
     }

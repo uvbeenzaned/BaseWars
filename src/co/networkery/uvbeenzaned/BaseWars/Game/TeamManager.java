@@ -1,9 +1,9 @@
 package co.networkery.uvbeenzaned.BaseWars.Game;
 
+import co.networkery.uvbeenzaned.BaseWars.Chat.Chat;
 import co.networkery.uvbeenzaned.BaseWars.Framework.ITeam;
 import co.networkery.uvbeenzaned.BaseWars.Framework.Team;
 import co.networkery.uvbeenzaned.BaseWars.IO.Configurations;
-import co.networkery.uvbeenzaned.BaseWars.Chat.Chat;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
